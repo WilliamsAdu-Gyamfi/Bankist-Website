@@ -32,28 +32,38 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+// I.selecting element
+//A.special way of selescting the entire element of  web page
 console.log(document.documentElement);
-const header = document.querySelector(".header");
-const allSections = document.querySelectorAll(".section");
-console.log(allSections);
+console.log(document.head);
+console.log(document.body);
 
-document.getElementById("section--1");
+//B.
+const header = document.querySelector(".header");
+
+//c.
 const allButtons = document.getElementsByTagName("button");
 console.log(allButtons);
 
-console.log(document.getElementsByClassName("btn"));
-
-// Creating and inserting elements
+// II. Creating and inserting elements
+//insertAdjacentHTML
 const message = document.createElement("div");
 message.classList.add("cookie-message");
-message.textContent =
-  "We use cookied for improved functionality and analytics.";
 message.innerHTML =
   'We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
 header.prepend(message);
-header.append(message);
-header.append(message.cloneNode(true));
+//header.append(message);
+//when we use both prepend and append at the same, only the append will work. It's unique and cannot be use at the same time
+//Prepending basically adds the element as a first child element
+//Appending add element as a last child element
 
-header.before(message);
-header.after(message);
+//we can solve it by clonning it
+//header.append(message.cloneNode(true)); // not really neccessary
+
+// III. deleting elements
+document
+  .querySelector(".btn--close-cookie")
+  .addEventListener("click", function () {
+    message.remove();
+  });
