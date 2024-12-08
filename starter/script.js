@@ -50,7 +50,7 @@ console.log(allButtons);
 const message = document.createElement("div");
 message.classList.add("cookie-message");
 message.innerHTML =
-  'We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+  'We use cookied for advanced functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
 header.prepend(message);
 //header.append(message);
