@@ -87,3 +87,10 @@ message.style.height = getComputedStyle(message).height + 30 + "px";
 //How To make it wwork
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height, 10) + 25 + "px";
+
+// Attributes
+const logo = document.querySelector(".nav__logo");
+console.log(logo);
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.className);
