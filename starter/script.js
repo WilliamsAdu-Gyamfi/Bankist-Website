@@ -52,8 +52,8 @@ message.classList.add("cookie-message");
 message.innerHTML =
   'We use cookied for advanced functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
-header.prepend(message);
-//header.append(message);
+//header.prepend(message);
+header.append(message);
 //when we use both prepend and append at the same, only the append will work. It's unique and cannot be use at the same time
 //Prepending basically adds the element as a first child element
 //Appending add element as a last child element
@@ -67,3 +67,23 @@ document
   .addEventListener("click", function () {
     message.remove();
   });
+
+// Styles
+message.style.backgroundColor = "#FFDF00";
+message.style.width = "130%";
+
+//These two examples won't work because it's inner HTML
+console.log(message.style.color);
+console.log(message.style.height);
+
+//To make this work, we must write it this way
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+//Let's increase the height of the cookie message
+message.style.height = getComputedStyle(message).height + 30 + "px";
+//(This won't work because, we are trying to add a number to a string😅)
+
+//How To make it wwork
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 25 + "px";
