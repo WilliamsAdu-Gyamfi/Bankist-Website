@@ -84,11 +84,16 @@ console.log(getComputedStyle(message).height);
 message.style.height = getComputedStyle(message).height + 30 + "px";
 //(This won't work because, we are trying to add a number to a string😅)
 
-//How To make it wwork
+//How To make it work
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height, 10) + 25 + "px";
 
+// Attributes
 const logo = document.querySelector(".nav__logo");
 console.log(logo);
 console.log(logo.alt);
 console.log(logo.src);
+
+// Data Attributes
+// we use camelNotation in the script whiles we use (-) in the HTML
+console.log(logo.dataset.andriodVersion);
