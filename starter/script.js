@@ -97,3 +97,26 @@ console.log(logo.src);
 // Data Attributes
 // we use camelNotation in the script whiles we use (-) in the HTML
 console.log(logo.dataset.andriodVersion);
+
+// smoth scrolling
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.getElementById("section--1");
+
+btnScrollTo.addEventListener("click", function (e) {
+  const s1Highlights = section1.getBoundingClientRect();
+  console.log(s1Highlights);
+
+  //Old ways of doing it
+  // window.scrollTo(
+  // s1Highlights.left + window.scrollX,
+  // s1Highlights.top + window.scrollY
+  // );
+
+  window.scrollTo({
+    left: s1Highlights.left + window.scrollX,
+    top: s1Highlights.top + window.scrollY,
+    behavior: "smooth",
+  });
+
+  //section1.scrollIntoView({ behaviour: "smooth" });
+});
