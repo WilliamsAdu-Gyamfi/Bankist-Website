@@ -32,6 +32,9 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
 // I.selecting element
 //A.special way of selescting the entire element of  web page
 console.log(document.documentElement);
@@ -95,7 +98,7 @@ console.log(logo.alt);
 console.log(logo.src);
 
 // Data Attributes
-// we use camelNotation in the script whiles we use (-) in the HTML
+// we use camelNotation in the script whiles we use " - " in the HTML
 console.log(logo.dataset.andriodVersion);
 
 // smoth scrolling
@@ -120,3 +123,28 @@ btnScrollTo.addEventListener("click", function (e) {
 
   //section1.scrollIntoView({ behaviour: "smooth" });
 });
+
+// More of event
+const h1 = document.querySelector("h1");
+
+/*
+0ld way of doing it!
+//1
+h1.addEventListener("mouseenter", function () {
+  alert("GREAT!");
+});
+//OR //2
+h1.onmouseenter = h1.addEventListener("mouseenter", function () {
+  alert("GREAT! ");
+});
+*/
+
+const alertH1 = function () {
+  alert("GREAT!👍");
+
+  // h1.removeEventListener("mouseenter", alertH1);
+};
+h1.addEventListener("mouseenter", alertH1);
+
+//we can also remove it after a certain time has passed not only in the event handler function
+setTimeout(() => h1.removeEventListener("mouseenter", alertH1), 9000);
