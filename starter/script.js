@@ -84,8 +84,7 @@ console.log(getComputedStyle(message).color);
 console.log(getComputedStyle(message).height);
 
 //Let's increase the height of the cookie message
-message.style.height = getComputedStyle(message).height + 30 + "px";
-//(This won't work because, we are trying to add a number to a string😅)
+message.style.height = getComputedStyle(message).height + 30 + "px"; //(This won't work because, we are trying to add a number to a string😅)
 
 //How To make it work
 message.style.height =
@@ -99,7 +98,7 @@ console.log(logo.src);
 
 // Data Attributes
 // we use camelNotation in the script whiles we use " - " in the HTML
-console.log(logo.dataset.andriodVersion);
+console.log(logo.dataset.andriodVersion); //andriod-version
 
 // smoth scrolling
 const btnScrollTo = document.querySelector(".btn--scroll-to");
@@ -129,10 +128,12 @@ const h1 = document.querySelector("h1");
 
 /*
 0ld way of doing it!
+
 //1
 h1.addEventListener("mouseenter", function () {
   alert("GREAT!");
 });
+
 //OR //2
 h1.onmouseenter = h1.addEventListener("mouseenter", function () {
   alert("GREAT! ");
@@ -142,6 +143,7 @@ h1.onmouseenter = h1.addEventListener("mouseenter", function () {
 const alertH1 = function () {
   alert("GREAT!👍");
 
+  //delete alert message after the first time
   // h1.removeEventListener("mouseenter", alertH1);
 };
 h1.addEventListener("mouseenter", alertH1);
