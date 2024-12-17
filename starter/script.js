@@ -150,3 +150,34 @@ h1.addEventListener("mouseenter", alertH1);
 
 //we can also remove it after a certain time has passed not only in the event handler function
 setTimeout(() => h1.removeEventListener("mouseenter", alertH1), 9000);
+
+// Random NUmbers
+//rgb(255, 255, 255);
+//rgb(0,0,0)
+// e.currentTarget = elment on which the event handler is attached
+// e.currentTarget === this
+//e.stopPropagation() stops it from reaching it's parent element(it hlps fix problems in a complex application)
+
+const randomInt = (max, min) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+console.log(randomColor(0, 255));
+
+document.querySelector(".nav__link").addEventListener("click", function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log("link", e.target, e.currentTarget);
+  console.log(e.currentTarget === this);
+
+  //e.stopPropagation();
+});
+
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log("container", e.target, e.currentTarget);
+});
+
+document.querySelector(".nav").addEventListener("click", function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log("Whole nav", e.target, e.currentTarget);
+});
