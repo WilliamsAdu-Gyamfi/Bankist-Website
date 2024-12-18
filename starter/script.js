@@ -1,12 +1,14 @@
 "use strict";
 
-///////////////////////////////////////
-// Modal window
-
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.getElementById("section--1");
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
+
+///////////////////////////////////////
+// Modal window
 
 const openModal = function (e) {
   e.preventDefault();
@@ -31,6 +33,50 @@ document.addEventListener("keydown", function (e) {
     closeModal();
   }
 });
+
+/////////////////////////////////////////////////////////////////////////
+// smoth scrolling
+//const btnScrollTo = document.querySelector(".btn--scroll-to");
+//const section1 = document.getElementById("section--1");
+
+btnScrollTo.addEventListener("click", function (e) {
+  const s1Highlights = section1.getBoundingClientRect();
+  console.log(s1Highlights);
+
+  //Old ways of doing it
+  // window.scrollTo(
+  // s1Highlights.left + window.scrollX,
+  // s1Highlights.top + window.scrollY
+  // );
+
+  window.scrollTo({
+    left: s1Highlights.left + window.scrollX,
+    top: s1Highlights.top + window.scrollY,
+    behavior: "smooth",
+  });
+
+  //section1.scrollIntoView({ behaviour: "smooth" });
+});
+
+// More of event
+const h1 = document.querySelector("h1");
+
+/*
+0ld way of doing it!
+
+//1
+h1.addEventListener("mouseenter", function () {
+  alert("GREAT!");
+});
+
+//OR //2
+h1.onmouseenter = h1.addEventListener("mouseenter", function () {
+  alert("GREAT! ");
+});
+*/
+
+//////////////////////////////////////////////////
+// Page Navigation
 
 /////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
@@ -99,46 +145,6 @@ console.log(logo.src);
 // Data Attributes
 // we use camelNotation in the script whiles we use " - " in the HTML
 console.log(logo.dataset.andriodVersion); //andriod-version
-
-// smoth scrolling
-const btnScrollTo = document.querySelector(".btn--scroll-to");
-const section1 = document.getElementById("section--1");
-
-btnScrollTo.addEventListener("click", function (e) {
-  const s1Highlights = section1.getBoundingClientRect();
-  console.log(s1Highlights);
-
-  //Old ways of doing it
-  // window.scrollTo(
-  // s1Highlights.left + window.scrollX,
-  // s1Highlights.top + window.scrollY
-  // );
-
-  window.scrollTo({
-    left: s1Highlights.left + window.scrollX,
-    top: s1Highlights.top + window.scrollY,
-    behavior: "smooth",
-  });
-
-  //section1.scrollIntoView({ behaviour: "smooth" });
-});
-
-// More of event
-const h1 = document.querySelector("h1");
-
-/*
-0ld way of doing it!
-
-//1
-h1.addEventListener("mouseenter", function () {
-  alert("GREAT!");
-});
-
-//OR //2
-h1.onmouseenter = h1.addEventListener("mouseenter", function () {
-  alert("GREAT! ");
-});
-*/
 
 const alertH1 = function () {
   alert("GREAT!👍");
