@@ -8,8 +8,8 @@ const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
 
 ///////////////////////////////////////
-// Modal window
 
+// Modal window
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove("hidden");
@@ -35,9 +35,10 @@ document.addEventListener("keydown", function (e) {
 });
 
 /////////////////////////////////////////////////////////////////////////
+
 // smoth scrolling
-//const btnScrollTo = document.querySelector(".btn--scroll-to");
-//const section1 = document.getElementById("section--1");
+//const btnScrollTo = document.querySelector(".btn--scroll-to"); Moved to top
+//const section1 = document.getElementById("section--1"); Moved to top
 
 btnScrollTo.addEventListener("click", function (e) {
   const s1Highlights = section1.getBoundingClientRect();
@@ -49,13 +50,14 @@ btnScrollTo.addEventListener("click", function (e) {
   // s1Highlights.top + window.scrollY
   // );
 
+  //section1.scrollIntoView({ behaviour: "smooth" });
+
+  // Best way 0f doing it
   window.scrollTo({
     left: s1Highlights.left + window.scrollX,
     top: s1Highlights.top + window.scrollY,
     behavior: "smooth",
   });
-
-  //section1.scrollIntoView({ behaviour: "smooth" });
 });
 
 // More of event
@@ -63,7 +65,6 @@ const h1 = document.querySelector("h1");
 
 /*
 0ld way of doing it!
-
 //1
 h1.addEventListener("mouseenter", function () {
   alert("GREAT!");
@@ -175,7 +176,7 @@ document.querySelector(".nav__link").addEventListener("click", function (e) {
   console.log("link", e.target, e.currentTarget);
   console.log(e.currentTarget === this);
 
-  //e.stopPropagation();
+  //e.stopPropagation(); Not advisable to use in simple projects
 });
 
 document.querySelector(".nav__links").addEventListener("click", function (e) {
