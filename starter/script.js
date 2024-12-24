@@ -79,6 +79,12 @@ h1.onmouseenter = h1.addEventListener("mouseenter", function () {
 //////////////////////////////////////////////////
 // Page Navigation
 
+document.querySelectorAll(".nav__link").forEach(function (el) {
+  el.addEventListener("click", function (e) {
+    console.log("good");
+  });
+});
+
 /////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -97,6 +103,7 @@ console.log(allButtons);
 
 // II. Creating and inserting elements
 //insertAdjacentHTML
+
 const message = document.createElement("div");
 message.classList.add("cookie-message");
 message.innerHTML =
