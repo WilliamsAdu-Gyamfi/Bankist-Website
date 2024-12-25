@@ -50,14 +50,16 @@ btnScrollTo.addEventListener("click", function (e) {
   // s1Highlights.top + window.scrollY
   // );
 
-  //section1.scrollIntoView({ behaviour: "smooth" });
+  section1.scrollIntoView({ behavior: "smooth" });
 
   // Best way 0f doing it
+  /*
   window.scrollTo({
     left: s1Highlights.left + window.scrollX,
     top: s1Highlights.top + window.scrollY,
     behavior: "smooth",
   });
+  */
 });
 
 // More of event
@@ -79,9 +81,21 @@ h1.onmouseenter = h1.addEventListener("mouseenter", function () {
 //////////////////////////////////////////////////
 // Page Navigation
 
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
 document.querySelectorAll(".nav__link").forEach(function (el) {
   el.addEventListener("click", function (e) {
-    console.log("good");
+    e.preventDefault();
+    const id = this.getAttribute("href");
+    console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
   });
 });
 
@@ -172,6 +186,7 @@ setTimeout(() => h1.removeEventListener("mouseenter", alertH1), 9000);
 // e.currentTarget === this
 //e.stopPropagation() stops it from reaching it's parent element(it hlps fix problems in a complex application)
 
+/*
 const randomInt = (max, min) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 const randomColor = () =>
@@ -195,3 +210,4 @@ document.querySelector(".nav").addEventListener("click", function (e) {
   this.style.backgroundColor = randomColor();
   console.log("Whole nav", e.target, e.currentTarget);
 });
+*/
