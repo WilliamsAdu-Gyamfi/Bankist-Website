@@ -50,9 +50,6 @@ btnScrollTo.addEventListener("click", function (e) {
   // s1Highlights.top + window.scrollY
   // );
 
-  section1.scrollIntoView({ behavior: "smooth" });
-
-  // Best way 0f doing it
   /*
   window.scrollTo({
     left: s1Highlights.left + window.scrollX,
@@ -60,6 +57,9 @@ btnScrollTo.addEventListener("click", function (e) {
     behavior: "smooth",
   });
   */
+
+  // Best way 0f doing it
+  section1.scrollIntoView({ behavior: "smooth" });
 });
 
 // More of event
