@@ -80,16 +80,7 @@ h1.onmouseenter = h1.addEventListener("mouseenter", function () {
 
 //////////////////////////////////////////////////
 // Page Navigation
-
-// document.querySelectorAll('.nav__link').forEach(function (el) {
-//   el.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     const id = this.getAttribute('href');
-//     console.log(id);
-//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-//   });
-// });
-
+/*
 document.querySelectorAll(".nav__link").forEach(function (el) {
   el.addEventListener("click", function (e) {
     e.preventDefault();
@@ -97,6 +88,21 @@ document.querySelectorAll(".nav__link").forEach(function (el) {
     console.log(id);
     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
   });
+});
+*/
+
+// Event delegation
+// It's not possible to add Eventhandlers to elements that do not exist
+// We can handle this by using event delegation
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  // matching strategy
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+    console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
 });
 
 /////////////////////////////////////////////////////////////////////////////////////
