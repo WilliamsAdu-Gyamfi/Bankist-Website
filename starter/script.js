@@ -34,6 +34,40 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+// Tab Components
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContainer = document.querySelector(".operations__tab-container");
+const tabsContent = document.querySelectorAll(".operations__content");
+
+// Doing this is a bad practice because what if we have 200 tabs, then we have to do the same 200X of this eact callback of this
+//tabs.forEach(tap => tap.addEventListener("click", () => console.log("Tap")));
+
+//use event delegation
+// we need to attach event handlers on the common parent element of all the elements that we are intrested in.
+//  in this case, that is tap container that we alredy selected
+tabsContainer.addEventListener("click", function (e) {
+  const btnClicked = e.target.closest(".operations__tab");
+  //console.log(btnClicked);
+
+  // Guard Clause = It's an if statement that will return early if some condition is matched
+  if (!btnClicked) return;
+
+  // Remove active classes
+  tabs.forEach(tap => tap.classList.remove("operations__tab--active"));
+  tabsContent.forEach(cont =>
+    cont.classList.remove("operations__content--active")
+  );
+
+  // Activate tab
+  btnClicked.classList.add("operations__tab--active");
+
+  // Active Content Area
+  //console.log(btnClicked.dataset.tab);
+  document
+    .querySelector(`.operations__content--${btnClicked.dataset.tab}`)
+    .classList.add("operations__content--active");
+});
+
 /////////////////////////////////////////////////////////////////////////
 
 // smoth scrolling
@@ -90,8 +124,11 @@ document.querySelectorAll(".nav__link").forEach(function (el) {
   });
 });
 */
+// event delegation
+//steps
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
 
-// Event delegation
 // It's not possible to add Eventhandlers to elements that do not exist
 // We can handle this by using event delegation
 document.querySelector(".nav__links").addEventListener("click", function (e) {
