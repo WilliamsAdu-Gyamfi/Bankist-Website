@@ -39,8 +39,8 @@ const tabs = document.querySelectorAll(".operations__tab");
 const tabsContainer = document.querySelector(".operations__tab-container");
 const tabsContent = document.querySelectorAll(".operations__content");
 
-// Doing this is a bad practice because what if we have 200 tabs, then we have to do the same 200X of this eact callback of this
 //tabs.forEach(tap => tap.addEventListener("click", () => console.log("Tap")));
+// Doing this is a bad practice because what if we have 200 tabs, then we have to do the same 200X of this each callback of this
 
 //use event delegation
 // we need to attach event handlers on the common parent element of all the elements that we are intrested in.
@@ -66,6 +66,34 @@ tabsContainer.addEventListener("click", function (e) {
   document
     .querySelector(`.operations__content--${btnClicked.dataset.tab}`)
     .classList.add("operations__content--active");
+});
+
+// Links fade animation
+const nav = document.querySelector(".nav");
+nav.addEventListener("mouseover", function (e) {
+  if (e.target.classList.contains("nav__link")) {
+    const btnLink = e.target;
+    const siblings = btnLink.closest(".nav").querySelectorAll(".nav__link");
+    const logo = btnLink.closest(".nav").querySelector("img");
+
+    siblings.forEach(el => {
+      if (el !== btnLink) el.style.opacity = 0.5;
+    });
+    logo.style.opacity = 0.5;
+  }
+});
+
+nav.addEventListener("mouseout", function (e) {
+  if (e.target.classList.contains("nav__link")) {
+    const btnLink = e.target;
+    const siblings = btnLink.closest(".nav").querySelectorAll(".nav__link");
+    const logo = btnLink.closest(".nav").querySelector("img");
+
+    siblings.forEach(el => {
+      if (el !== btnLink) el.style.opacity = 1;
+    });
+    logo.style.opacity = 1;
+  }
 });
 
 /////////////////////////////////////////////////////////////////////////
