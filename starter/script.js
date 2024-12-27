@@ -87,6 +87,17 @@ nav.addEventListener("mouseover", linksHover.bind(0.5));
 
 nav.addEventListener("mouseout", linksHover.bind(1));
 
+// Sticky Navigation
+const section1Cords = section1.getBoundingClientRect();
+//console.log(section1Cords);
+
+window.addEventListener("scroll", function () {
+  //console.log(window.scrollY);
+
+  if (this.window.scrollY > section1Cords.top) nav.classList.add("sticky");
+  else nav.classList.remove("sticky");
+});
+
 /////////////////////////////////////////////////////////////////////////
 
 // smoth scrolling
