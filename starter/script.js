@@ -70,31 +70,22 @@ tabsContainer.addEventListener("click", function (e) {
 
 // Links fade animation
 const nav = document.querySelector(".nav");
-nav.addEventListener("mouseover", function (e) {
+
+const linksHover = function (e) {
   if (e.target.classList.contains("nav__link")) {
     const btnLink = e.target;
     const siblings = btnLink.closest(".nav").querySelectorAll(".nav__link");
     const logo = btnLink.closest(".nav").querySelector("img");
 
     siblings.forEach(el => {
-      if (el !== btnLink) el.style.opacity = 0.5;
+      if (el !== btnLink) el.style.opacity = this;
     });
-    logo.style.opacity = 0.5;
+    logo.style.opacity = this;
   }
-});
+};
+nav.addEventListener("mouseover", linksHover.bind(0.5));
 
-nav.addEventListener("mouseout", function (e) {
-  if (e.target.classList.contains("nav__link")) {
-    const btnLink = e.target;
-    const siblings = btnLink.closest(".nav").querySelectorAll(".nav__link");
-    const logo = btnLink.closest(".nav").querySelector("img");
-
-    siblings.forEach(el => {
-      if (el !== btnLink) el.style.opacity = 1;
-    });
-    logo.style.opacity = 1;
-  }
-});
+nav.addEventListener("mouseout", linksHover.bind(1));
 
 /////////////////////////////////////////////////////////////////////////
 
