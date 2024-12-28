@@ -87,7 +87,8 @@ nav.addEventListener("mouseover", linksHover.bind(0.5));
 
 nav.addEventListener("mouseout", linksHover.bind(1));
 
-// Sticky Navigation
+/*
+// Sticky Navigation 1
 const section1Cords = section1.getBoundingClientRect();
 //console.log(section1Cords);
 
@@ -97,6 +98,44 @@ window.addEventListener("scroll", function () {
   if (this.window.scrollY > section1Cords.top) nav.classList.add("sticky");
   else nav.classList.remove("sticky");
 });
+*/
+
+/*
+// Sticky Navigation 2: Intersection Observer API
+const observerCallBack = function (entries, observer) {
+  entries.forEach(entry => {
+    console.log(entry);
+  });
+};
+const observerOpts = {
+  root: null,
+  //threshold: 0.1,
+  threshold: [0, 0.3], // It can be array
+};
+
+// The "new IntersectionObserver function accepts two arguments(CallBack function and object)"
+const observer = new IntersectionObserver(observerCallBack, observerOpts);
+observer.observe(section1); //ssection1 is the target
+*/
+
+const header = document.querySelector(".header");
+const navHeight = nav.getBoundingClientRect().height;
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (!entry.isIntersecting) nav.classList.add("sticky");
+  else nav.classList.remove("sticky");
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
+});
+
+headerObserver.observe(header);
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -181,6 +220,7 @@ console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
 
+/*
 //B.
 const header = document.querySelector(".header");
 
@@ -201,35 +241,36 @@ header.append(message);
 //when we use both prepend and append at the same, only the append will work. It's unique and cannot be use at the same time
 //Prepending basically adds the element as a first child element
 //Appending add element as a last child element
-
+*/
 //we can solve it by clonning it
 //header.append(message.cloneNode(true)); // not really neccessary
 
+/*
 // III. deleting elements
 document
   .querySelector(".btn--close-cookie")
   .addEventListener("click", function () {
     message.remove();
   });
-
+*/
 // Styles
-message.style.backgroundColor = "#FFDF00";
-message.style.width = "130%";
+//message.style.backgroundColor = "#FFDF00";
+//message.style.width = "130%";
 
 //These two examples won't work because it's inner HTML
-console.log(message.style.color);
-console.log(message.style.height);
+//console.log(message.style.color);
+//console.log(message.style.height);
 
 //To make this work, we must write it this way
-console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).height);
+//console.log(getComputedStyle(message).color);
+//console.log(getComputedStyle(message).height);
 
 //Let's increase the height of the cookie message
-message.style.height = getComputedStyle(message).height + 30 + "px"; //(This won't work because, we are trying to add a number to a string😅)
+//message.style.height = getComputedStyle(message).height + 30 + "px"; //(This won't work because, we are trying to add a number to a string😅)
 
 //How To make it work
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 25 + "px";
+//message.style.height =
+//Number.parseFloat(getComputedStyle(message).height, 10) + 25 + "px";
 
 // Attributes
 const logo = document.querySelector(".nav__logo");
