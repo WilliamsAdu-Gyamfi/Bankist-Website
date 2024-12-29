@@ -114,6 +114,7 @@ const observerOpts = {
 };
 
 // The "new IntersectionObserver function accepts two arguments(CallBack function and object)"
+
 const observer = new IntersectionObserver(observerCallBack, observerOpts);
 observer.observe(section1); //ssection1 is the target
 */
@@ -136,6 +137,28 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 });
 
 headerObserver.observe(header);
+
+// Reveal sections
+const allSections = document.querySelectorAll(".section");
+
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove("section--hidden");
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.18,
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add("section--hidden");
+});
 
 /////////////////////////////////////////////////////////////////////////
 
