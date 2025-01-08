@@ -291,7 +291,7 @@ const slider = function () {
   /*
 dotContainer.addEventListener("click", function (e) {
   if (e.target.classList.contains("dots__dot")) {
-    //const slide = e.target.dataset.slide;
+    //const slide = e.target.dataset.slide; OR
     const { slide } = e.target.dataset; //using destructuring
     moveSlides(slide);
     activateDot(slide);
@@ -519,3 +519,12 @@ document.querySelector(".nav").addEventListener("click", function (e) {
   console.log("Whole nav", e.target, e.currentTarget);
 });
 */
+
+//Lifecycle DOM Events
+document.addEventListener("DOMContentLoaded", function (e) {
+  console.log("Project HTML tree", e);
+});
+
+window.addEventListener("load", function (e) {
+  console.log("Load page", e);
+});
